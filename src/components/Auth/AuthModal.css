@@ -1,0 +1,357 @@
+/* AuthModal.css - Streamlined Low-Height Compact Luxury Modal */
+
+.compact-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 1rem;
+  animation: compactFade 0.25s ease;
+}
+
+@keyframes compactFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.compact-modal-card {
+  background: #ffffff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+  padding: 1.75rem 1.75rem 1.25rem 1.75rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  animation: compactSlide 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: max-width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.compact-modal-card.signup-wide {
+  max-width: 620px;
+}
+
+@keyframes compactSlide {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Close Button */
+.compact-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  font-size: 0.9rem;
+  color: #64748b;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+
+.compact-close-btn:hover {
+  background: #F85959;
+  color: #ffffff;
+}
+
+/* Header */
+.compact-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.compact-logo {
+  margin-bottom: 0.35rem;
+}
+
+.compact-logo img {
+  height: 34px;
+  object-fit: contain;
+}
+
+.compact-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+
+.compact-subtitle-desc {
+  font-size: 0.85rem;
+  color: #64748b;
+  line-height: 1.45;
+  margin: 0 0 0.85rem 0;
+}
+
+/* Tab Switcher */
+.compact-tab-pill {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 30px;
+  padding: 3px;
+}
+
+.compact-tab-btn {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.compact-tab-btn.active {
+  background: #F85959;
+  color: #ffffff;
+  box-shadow: 0 3px 12px rgba(248, 89, 89, 0.35);
+}
+
+/* 2-Column Grid for Signup */
+.compact-grid-2col {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.compact-field {
+  margin-bottom: 0.85rem;
+}
+
+.compact-field label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.775rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field-icon {
+  color: #F85959;
+  font-size: 0.8rem;
+}
+
+.compact-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.compact-field input:focus {
+  border-color: #F85959;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(248, 89, 89, 0.15);
+}
+
+.compact-pass-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.compact-pass-wrapper input {
+  padding-right: 2.3rem;
+}
+
+.compact-eye-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.compact-eye-toggle:hover {
+  color: #F85959;
+}
+
+.compact-error {
+  display: block;
+  color: #ef4444;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.compact-forgot {
+  text-align: right;
+  margin-bottom: 0.75rem;
+}
+
+.compact-forgot-link-btn {
+  background: none;
+  border: none;
+  color: #F85959;
+  font-size: 0.825rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.compact-forgot-link-btn:hover {
+  text-decoration: underline;
+}
+
+.compact-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #F85959;
+  color: #ffffff;
+  border: none;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 5px 15px rgba(248, 89, 89, 0.35);
+  margin-top: 0.25rem;
+}
+
+.compact-submit-btn:hover {
+  background: #e04848;
+  transform: translateY(-1px);
+  box-shadow: 0 7px 20px rgba(248, 89, 89, 0.45);
+}
+
+.compact-forgot-back {
+  margin-top: 1rem;
+}
+
+.compact-switch-btn.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.compact-switch-btn.back-link:hover {
+  color: #F85959;
+}
+
+.compact-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.55rem 1.25rem;
+  background: #f1f5f9;
+  color: #0f172a;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.85rem;
+}
+
+.compact-back-btn:hover {
+  background: #F85959;
+  color: #ffffff;
+}
+
+.compact-footer {
+  text-align: center;
+  margin-top: 0.85rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid #f1f5f9;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.compact-footer p {
+  margin: 0;
+}
+
+.compact-switch-btn {
+  background: none;
+  border: none;
+  color: #F85959;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+  margin-left: 4px;
+}
+
+.compact-switch-btn:hover {
+  text-decoration: underline;
+}
+
+/* Success Box */
+.compact-success {
+  text-align: center;
+  padding: 1.25rem 0.5rem;
+}
+
+.compact-success-icon {
+  font-size: 2.75rem;
+  color: #10b981;
+  margin-bottom: 0.5rem;
+}
+
+.compact-success h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+}
+
+/* Responsive Grid */
+@media (max-width: 620px) {
+  .compact-modal-card.signup-wide {
+    max-width: 95%;
+  }
+
+  .compact-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
