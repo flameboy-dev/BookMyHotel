@@ -87,7 +87,7 @@
   align-items: center;
 }
 
-.input-icon {
+.search-input .input-icon {
   position: absolute;
   left: 14px;
   color: #F85959;

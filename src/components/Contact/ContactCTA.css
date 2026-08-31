@@ -1,0 +1,118 @@
+/* ContactCTA.css - Dark Slate Luxury CTA Banner */
+
+.contact-cta-section {
+  padding: 0 0 5rem 0;
+  background: #f8fafc;
+}
+
+.contact-cta-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 24px;
+  padding: 3.5rem 3rem;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cta-badge-tag {
+  display: inline-block;
+  color: #F85959;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.cta-headline {
+  font-family: var(--font-serif);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.cta-subhead {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 580px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.cta-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.cta-btn-white {
+  background: #F85959;
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 0.85rem 1.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 18px rgba(248, 89, 89, 0.4);
+}
+
+.cta-btn-white:hover {
+  background: #e04848;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(248, 89, 89, 0.5);
+  color: #ffffff;
+}
+
+.cta-btn-outline {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  border-radius: 30px;
+  padding: 0.85rem 1.85rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.cta-btn-outline:hover {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  .contact-cta-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .cta-subhead {
+    max-width: 100%;
+  }
+
+  .cta-buttons-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-btn-white,
+  .cta-btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+}

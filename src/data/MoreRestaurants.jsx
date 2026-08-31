@@ -56,9 +56,9 @@ export const restaurants = [
     id: 5,
     name: "Trattoria Bella Pasta & Pizza",
     location: "Pune, India",
-    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
+    image: "https://images.unsplash.com/photo-1579684947550-22e945225d9a?auto=format&fit=crop&w=800&q=80",
     images: [
-      "https://images.unsplash.com/photo-1579684947550-22e945225d9a?auto=format&fit=crop&w=800&q=80"
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
     ],
     description: "Authentic Italian wood-fired Neapolitan pizza, handmade tagliatelle, and gelato.",
     rating: 4.7,
@@ -129,6 +129,136 @@ export const restaurants = [
     rating: 4.8,
     cuisine: "Curry",
     amenities: ["Earthen Pot Cooking", "Family Hall", "Home Delivery", "Free WiFi"]
+  },
+  {
+    id: 11,
+    name: "Lakefront Sunset Palace Dining",
+    location: "Udaipur, India",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Romantic lakefront dining overlooking Lake Pichola with candlelit tables and Mewari specialties.",
+    rating: 4.9,
+    cuisine: "Indian",
+    amenities: ["Lake View", "Candlelit Dining", "Mewari Cuisine", "Live Sitar"]
+  },
+  {
+    id: 12,
+    name: "Golden Leaf Pan-Asian & Sushi Bar",
+    location: "Mumbai, India",
+    image: "https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Fresh sashimi, dragon rolls, teppanyaki live cooking, and premium Japanese sake pairings.",
+    rating: 4.8,
+    cuisine: "Asian",
+    amenities: ["Teppanyaki Counter", "Sushi Bar", "Sake Tasting", "Valet Parking"]
+  },
+  {
+    id: 13,
+    name: "Fisherman's Wharf Grill",
+    location: "Goa, India",
+    image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Riverside dining serving grilled lobsters, garlic butter prawns, and live Latin music bands.",
+    rating: 4.7,
+    cuisine: "Seafood",
+    amenities: ["Riverside Terrace", "Live Band", "Cocktail Bar", "Fresh Crab"]
+  },
+  {
+    id: 14,
+    name: "The Malabar Coast Spice Lounge",
+    location: "Kochi, India",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Kerala coconut beef fry, prawn moilee, appam, and traditional banana leaf feasts.",
+    rating: 4.8,
+    cuisine: "Curry",
+    amenities: ["Banana Leaf Feast", "Kerala Spices", "Backwater View", "Free WiFi"]
+  },
+  {
+    id: 15,
+    name: "Himalayan Ridge Pines Cafe",
+    location: "Shimla, India",
+    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Cozy pine wood cafe serving hot apple pie, artisan espresso, woodfired pizzas, and mountain tea.",
+    rating: 4.7,
+    cuisine: "Organic",
+    amenities: ["Valley View", "Fireplace", "Artisan Coffee", "Pet Friendly"]
+  },
+  {
+    id: 16,
+    name: "Tandoori Flames Kebab Studio",
+    location: "Delhi, India",
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1565557623262-b51c2513a641?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Open clay tandoor kitchen serving Seekh Kebabs, Paneer Tikka, and garlic naans.",
+    rating: 4.8,
+    cuisine: "Indian",
+    amenities: ["Live Tandoor", "Family Dining", "Free Delivery", "AC Lounge"]
+  },
+  {
+    id: 17,
+    name: "Bistro La Seine French Cafe",
+    location: "Pondicherry, India",
+    image: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "French colonial garden bistro serving butter croissants, French onion soup, and crepes.",
+    rating: 4.9,
+    cuisine: "International",
+    amenities: ["French Pastries", "Garden Seating", "Colonial Villa", "Espresso Bar"]
+  },
+  {
+    id: 18,
+    name: "Varanasi Ghat Heritage Kitchen",
+    location: "Varanasi, India",
+    image: "https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Traditional Sattvic vegetarian dining overlooking the sacred Ganges River.",
+    rating: 4.8,
+    cuisine: "Indian",
+    amenities: ["Ganges River View", "Pure Vegetarian", "Sattvic Thali", "Sunset Terrace"]
+  },
+  {
+    id: 19,
+    name: "The Cellar Steakhouse & Wine Bar",
+    location: "Bangalore, India",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Aged ribeye steaks, truffle mac & cheese, and international wine cellar selections.",
+    rating: 4.9,
+    cuisine: "International",
+    amenities: ["Vintage Wine Cellar", "Truffle Dishes", "Private Sommelier", "Valet Parking"]
+  },
+  {
+    id: 20,
+    name: "Saffron Lounge & Shisha Terrace",
+    location: "Goa, India",
+    image: "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+    ],
+    description: "Middle Eastern mezze platters, falafel wraps, exotic teas, and seaside shisha lounge.",
+    rating: 4.7,
+    cuisine: "International",
+    amenities: ["Sea View Lounge", "Mezze Platters", "Shisha Bar", "Sunset Cabanas"]
   }
 ];
 

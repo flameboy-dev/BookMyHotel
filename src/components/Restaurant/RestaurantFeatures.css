@@ -1,0 +1,123 @@
+/* RestaurantFeatures.css - Luxury Dining Highlights */
+
+.dining-features-section {
+  padding: 5rem 0;
+  background: #ffffff;
+}
+
+.dining-features-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.dining-badge {
+  display: inline-block;
+  color: #F85959;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.dining-title {
+  font-family: var(--font-serif);
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.dining-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.dining-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.dining-feature-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 2.25rem 1.65rem;
+  border: 1px solid #e2e8f0;
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dining-feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #F85959, #ff7a7a);
+  opacity: 0;
+  transition: all 0.35s ease;
+}
+
+.dining-feature-card:hover {
+  background: #ffffff;
+  transform: translateY(-6px);
+  border-color: #cbd5e1;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+}
+
+.dining-feature-card:hover::before {
+  opacity: 1;
+}
+
+.dining-icon-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: rgba(248, 89, 89, 0.1);
+  color: #F85959;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.dining-feature-card:hover .dining-icon-badge {
+  background: #F85959;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(248, 89, 89, 0.35);
+}
+
+.dining-card-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.65rem;
+}
+
+.dining-card-desc {
+  font-size: 0.925rem;
+  color: #64748b;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  .dining-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .dining-features-grid {
+    grid-template-columns: 1fr;
+  }
+}

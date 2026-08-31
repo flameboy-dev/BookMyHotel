@@ -38,8 +38,13 @@ const RestaurantFilterBar = ({ onSearch }) => {
       role="search"
     >
       <div className="filter-header">
-        <h1 id="filter-heading" className="filter-title">Find Your Perfect Meal</h1>
-        <p id="filter-description">Refine your restaurant search</p>
+        <span className="filter-badge">
+          <i className="fa-solid fa-sliders badge-icon"></i> SEARCH &amp; FILTER
+        </span>
+        <h1 id="filter-heading" className="filter-title">Find Your Perfect Dining</h1>
+        <p id="filter-description" className="filter-subtitle">
+          Refine your restaurant search by location, date, time, cuisine &amp; ratings
+        </p>
       </div>
 
       <form
@@ -49,25 +54,38 @@ const RestaurantFilterBar = ({ onSearch }) => {
       >
         {/* Location */}
         <div className="filter-group">
-          <label htmlFor="location">Location</label>
+          <label htmlFor="location">
+            <i className="fa-solid fa-location-dot label-icon"></i> Location
+          </label>
           <select
             id="location"
             name="location"
             value={filters.location}
             onChange={handleChange}
           >
-            <option value="">Select City</option>
+            <option value="">All Locations</option>
             <option value="Mumbai">Mumbai</option>
             <option value="Goa">Goa</option>
             <option value="Dharamshala">Dharamshala</option>
             <option value="Kolkata">Kolkata</option>
             <option value="Pune">Pune</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Udaipur">Udaipur</option>
+            <option value="Kochi">Kochi</option>
+            <option value="Shimla">Shimla</option>
+            <option value="Pondicherry">Pondicherry</option>
+            <option value="Varanasi">Varanasi</option>
           </select>
         </div>
 
         {/* Reservation Date */}
         <div className="filter-group">
-          <label htmlFor="date">Reservation Date</label>
+          <label htmlFor="date">
+            <i className="fa-solid fa-calendar-days label-icon"></i> Date
+          </label>
           <input
             type="date"
             id="date"
@@ -81,7 +99,9 @@ const RestaurantFilterBar = ({ onSearch }) => {
 
         {/* Time */}
         <div className="filter-group">
-          <label htmlFor="time">Time</label>
+          <label htmlFor="time">
+            <i className="fa-solid fa-clock label-icon"></i> Time
+          </label>
           <input
             type="time"
             id="time"
@@ -94,31 +114,33 @@ const RestaurantFilterBar = ({ onSearch }) => {
 
         {/* Cuisine */}
         <div className="filter-group">
-          <label htmlFor="cuisine">Cuisine</label>
+          <label htmlFor="cuisine">
+            <i className="fa-solid fa-utensils label-icon"></i> Cuisine
+          </label>
           <select
             id="cuisine"
             name="cuisine"
             value={filters.cuisine}
             onChange={handleChange}
-            className="rating-select"
           >
             <option value="">Any Cuisine</option>
             <option value="Seafood">Seafood</option>
             <option value="Organic">Organic / Healthy</option>
             <option value="Curry">Bengali / Indian Curry</option>
-            <option value="Pasta">Pasta & Pizza</option>
+            <option value="Pasta">Pasta &amp; Pizza</option>
           </select>
         </div>
 
         {/* Star Rating */}
         <div className="filter-group">
-          <label htmlFor="rating">Star Rating</label>
+          <label htmlFor="rating">
+            <i className="fa-solid fa-star label-icon"></i> Rating
+          </label>
           <select
             id="rating"
             name="rating"
             value={filters.rating}
             onChange={handleChange}
-            className="rating-select"
           >
             <option value="">Any Rating</option>
             <option value="4.8">★★★★★ (4.8+ stars)</option>
@@ -127,14 +149,16 @@ const RestaurantFilterBar = ({ onSearch }) => {
         </div>
 
         {/* Search Button */}
-        <button
-          type="submit"
-          className="search-button"
-          aria-label="Search restaurants"
-        >
-          Search
-          <i className="fas fa-search search-icon" aria-hidden="true"></i>
-        </button>
+        <div className="search-btn-group">
+          <button
+            type="submit"
+            className="search-button"
+            aria-label="Search restaurants"
+          >
+            <span>Search Dining</span>
+            <i className="fa-solid fa-arrow-right search-btn-icon" aria-hidden="true"></i>
+          </button>
+        </div>
       </form>
     </section>
   );

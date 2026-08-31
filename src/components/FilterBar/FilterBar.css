@@ -22,8 +22,8 @@
   align-items: center;
   gap: 6px;
   padding: 4px 12px;
-  background: rgba(247, 148, 29, 0.1);
-  color: #d97706;
+  background: rgba(248, 89, 89, 0.1);
+  color: #F85959;
   border-radius: 20px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -77,7 +77,7 @@
 }
 
 .filter-group label .label-icon {
-  color: #f7941d;
+  color: #F85959;
   font-size: 0.85rem;
 }
 
@@ -86,9 +86,9 @@
 }
 
 /* Input & Select Fields */
-select,
-input[type="date"],
-input[type="time"] {
+.filter-bar-container select,
+.filter-bar-container input[type="date"],
+.filter-bar-container input[type="time"] {
   padding: 0.85rem 1rem;
   border: 1.5px solid #e2e8f0;
   border-radius: 14px;
@@ -97,33 +97,34 @@ input[type="time"] {
   font-size: 0.95rem;
   font-weight: 500;
   width: 100%;
+  box-sizing: border-box;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   appearance: none;
   font-family: inherit;
 }
 
-select {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f7941d'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+.filter-bar-container select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23F85959'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1.2rem;
   padding-right: 2.5rem;
 }
 
-select:hover,
-input[type="date"]:hover,
-input[type="time"]:hover {
+.filter-bar-container select:hover,
+.filter-bar-container input[type="date"]:hover,
+.filter-bar-container input[type="time"]:hover {
   border-color: #cbd5e1;
   background: #ffffff;
 }
 
-select:focus,
-input[type="date"]:focus,
-input[type="time"]:focus {
+.filter-bar-container select:focus,
+.filter-bar-container input[type="date"]:focus,
+.filter-bar-container input[type="time"]:focus {
   outline: none;
-  border-color: #f7941d;
+  border-color: #F85959;
   background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(247, 148, 29, 0.15);
+  box-shadow: 0 0 0 4px rgba(248, 89, 89, 0.15);
 }
 
 /* Price Range Styles */
@@ -141,8 +142,8 @@ input[type="time"]:focus {
 .price-badge-val {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #f7941d;
-  background: rgba(247, 148, 29, 0.08);
+  color: #F85959;
+  background: rgba(248, 89, 89, 0.08);
   padding: 2px 10px;
   border-radius: 12px;
 }
@@ -170,7 +171,7 @@ input[type="time"]:focus {
   background: #e2e8f0;
   border-radius: 3px;
   outline: none;
-  accent-color: #f7941d;
+  accent-color: #F85959;
   cursor: pointer;
 }
 
@@ -186,7 +187,7 @@ input[type="time"]:focus {
   gap: 8px;
   width: 100%;
   padding: 0.9rem 1.5rem;
-  background: linear-gradient(135deg, #f7941d 0%, #ff5252 100%);
+  background: #F85959;
   color: white;
   border: none;
   border-radius: 14px;
@@ -194,13 +195,14 @@ input[type="time"]:focus {
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 8px 20px rgba(247, 148, 29, 0.3);
+  box-shadow: 0 8px 20px rgba(248, 89, 89, 0.3);
   height: 48px;
 }
 
 .search-button:hover {
+  background: #e04848;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(247, 148, 29, 0.4);
+  box-shadow: 0 12px 28px rgba(248, 89, 89, 0.4);
 }
 
 .search-button:active {

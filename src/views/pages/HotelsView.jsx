@@ -47,8 +47,6 @@ export function HotelsView() {
       />
       <FilterBar onSearch={handleSearch} initialFilters={filters} />
       <MoreHotel filters={filters} onClearFilters={() => setFilters(null)} />
-      <Features />
-      <TestimonySection />
       <Footer />
     </div>
   );

@@ -1,426 +1,431 @@
-/* Container for the restaurant section */
+/* Restaurant.css - Matching Premium Hotel Card Design System */
+
 .restaurants-section {
-  padding: 6rem 2rem;
-  /* Slightly increased padding for better spacing on top/bottom */
-  background-color: var(--light-color);
+  padding: 5rem 0;
+  background-color: #f8fafc;
 }
 
-/* Grid layout for restaurant cards */
 .restaurants-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.5rem;
-  /* Increased gap for more breathing space */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
   justify-content: center;
+  align-items: stretch;
 }
 
-/* Individual restaurant card styling */
-.restaurant-card {
-  flex: 1;
-  min-width: 280px;
-  max-width: 350px;
-  background-color: #ffffff;
-  border-radius: 12px;
-  /* Slightly larger for a softer look */
+/* Hotel Card Equivalent Styling for Restaurant Cards */
+.hotel-card.restaurant-card-variant {
+  background: #ffffff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-  /* Softer and larger shadow for modern feel */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 1.5rem;
-  /* Added padding inside cards for content spacing*/
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-/* Hover effect with subtle lift and shadow */
-.restaurant-card:hover {
+.hotel-card.restaurant-card-variant:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+  border-color: rgba(248, 89, 89, 0.3);
 }
 
-/* Image section for restaurant, background image */
-.restaurant-image {
+/* Image & Badges */
+.restaurant-card-variant .hotel-image-wrapper {
+  position: relative;
+  height: 230px;
   width: 100%;
-  /* full width */
-  height: 200px;
-  /* or whatever height you prefer */
+  overflow: hidden;
+}
+
+.restaurant-card-variant .hotel-image-bg {
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  border-radius: 8px;
-  /* optional, for rounded corners */
-  margin-bottom: 1rem;
-  /* spacing below image if needed */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Restaurant name styling */
-.restaurant-name {
-  font-size: 1.75rem;
-  /* Slightly larger for prominence */
-  margin-bottom: 0.75rem;
-  color: var(--dark-color);
-  line-height: 1.2;
+.hotel-card.restaurant-card-variant:hover .hotel-image-bg {
+  transform: scale(1.08);
 }
 
-/* Location info styling */
-.restaurant-location {
+.restaurant-card-variant .hotel-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.45) 100%);
+  pointer-events: none;
+}
+
+.restaurant-card-variant .hotel-rating-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
-  color: var(--secondary-color);
+  gap: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.restaurant-card-variant .hotel-rating-badge .star-icon {
+  color: #fbbf24;
+  font-size: 0.85rem;
+}
+
+.dining-badge-style {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: linear-gradient(135deg, #F85959 0%, #ff7a7a 100%);
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: 24px;
+  font-weight: 700;
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  box-shadow: 0 4px 12px rgba(248, 89, 89, 0.35);
+  font-size: 0.85rem;
+}
+
+/* Card Content Area */
+.restaurant-card-variant .hotel-content {
+  padding: 1.35rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.restaurant-card-variant .hotel-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.restaurant-card-variant .hotel-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.restaurant-card-variant .hotel-location .location-icon {
+  color: #F85959;
+  font-size: 0.9rem;
+}
+
+.restaurant-card-variant .hotel-description {
+  color: #475569;
+  font-size: 0.875rem;
+  line-height: 1.55;
   margin-bottom: 1rem;
-  font-size: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.7rem;
 }
 
-.restaurant-location i {
-  margin-right: 0.75rem;
-  font-size: 1.2rem;
-}
-
-/* Description paragraph for restaurant */
-.restaurant-description {
-  margin-bottom: 1.75rem;
-  color: var(--secondary-color);
-  line-height: 1.6;
-  font-size: 1rem;
-}
-
-/* Amenities badges container */
-.restaurant-amenities {
+.restaurant-card-variant .hotel-amenities {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.75rem;
+  gap: 6px;
+  margin-bottom: 1.25rem;
+  margin-top: auto;
 }
 
-/* Individual amenity badge styling */
-.restaurant-amenity {
-  font-size: 0.9rem;
-  padding: 0.375rem 0.75rem;
-  background-color: var(--light-color);
-  border-radius: 25px;
-  color: var(--secondary-color);
-  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s ease;
+.restaurant-card-variant .hotel-amenity {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  background-color: #f1f5f9;
+  border-radius: 14px;
+  color: #475569;
+  font-weight: 500;
+  border: 1px solid #e2e8f0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.restaurant-amenity:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+.restaurant-card-variant .hotel-amenity.extra {
+  background-color: rgba(248, 89, 89, 0.1);
+  color: #F85959;
+  border-color: rgba(248, 89, 89, 0.2);
+  font-weight: 600;
 }
 
-/* Rating section styling */
-.restaurant-rating {
+.hotel-card.restaurant-card-variant:hover .hotel-amenity {
+  background-color: #e2e8f0;
+}
+
+/* Card Footer CTA Button */
+.restaurant-card-variant .hotel-card-footer {
+  margin-top: auto;
+}
+
+.restaurant-card-variant .hotel-link {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.restaurant-stars {
-  color: var(--warning-color);
-  margin-right: 0.75rem;
-  font-size: 1.2rem;
-}
-
-.restaurant-rating-text {
-  font-size: 0.9rem;
-  color: var(--secondary-color);
-}
-
-/* Link/button to view details or book */
-.restaurant-link {
-  display: inline-block;
-  padding: 0.75rem 2.5rem;
-  background-color: var(--primary-color);
-  color: #fff;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  align-self: center;
-  /* Center button inside card if needed */
-}
-
-.restaurant-link:hover {
-  background-color: #ffffff;
-  border: 2px solid #f44747;
-  color: #f44747;
-  text-decoration: none;
-
-}
-
-/* Responsive layout adjustments */
-@media (max-width: 768px) {
-  .restaurants-grid {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .restaurant-card {
-    width: 100%;
-    padding: 2rem 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .restaurant-name {
-    font-size: 1.5rem;
-  }
-
-  .restaurant-link {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-  }
-}
-
-/* More Button Styles */
-.more-button-container {
-  display: flex;
   justify-content: center;
-  margin-top: 3.5rem;
-}
-
-.restaurant-link-more {
-  padding: 0.75rem 2.5rem;
-  background-color: var(--primary-color);
-  color: #fff;
-  border-radius: 50px;
-  text-decoration: none;
+  gap: 8px;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #ffffff;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
   font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 0.925rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
 }
 
-.restaurant-link-more:hover {
-  background-color: #34c0e7;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-  color: #fff;
+.restaurant-card-variant .hotel-link .link-arrow {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
 }
 
-/* Pagination styles */
+.hotel-card.restaurant-card-variant:hover .hotel-link {
+  background: linear-gradient(135deg, #F85959 0%, #ff7a7a 100%);
+  box-shadow: 0 6px 16px rgba(248, 89, 89, 0.35);
+  color: #ffffff;
+}
+
+.hotel-card.restaurant-card-variant:hover .hotel-link .link-arrow {
+  transform: translateX(4px);
+}
+
+/* Pagination Styles */
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
-  gap: 1rem;
+  margin-top: 3.5rem;
+  gap: 0.75rem;
 }
 
 .page-btn {
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  border: 2px solid var(--primary-color);
-  background-color: transparent;
-  color: var(--primary-color);
-  font-weight: bold;
+  border: 2px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #475569;
+  font-weight: 600;
   cursor: pointer;
-  font-size: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  padding: 0;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
 }
 
 .page-btn.active {
-  background-color: var(--primary-color);
-  color: #fff;
+  background: #F85959;
+  border-color: #F85959;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(248, 89, 89, 0.35);
 }
 
-.page-btn:hover {
-  background-color: rgba(255, 99, 132, 0.1);
-  transform: scale(1.1);
+.page-btn:hover:not(.active) {
+  border-color: #F85959;
+  color: #F85959;
+  transform: translateY(-2px);
 }
-/* Popup Styles */
-.restaurant-popup {
+
+/* Popup Overlay & Modal Styles */
+.restaurant-popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  inset: 0;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(6px);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  animation: fadeIn 0.3s;
+  padding: 1rem;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.popup-content {
-  background: white;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 500px;
+.popup-card-content {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px;
   max-height: 90vh;
   overflow-y: auto;
   position: relative;
-  animation: slideUp 0.3s;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.3);
+  padding: 1.75rem;
 }
 
-@keyframes slideUp {
-  from { 
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to { 
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.close-popup {
+.close-popup-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background: none;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
   border: none;
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1rem;
+  color: #64748b;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
   z-index: 10;
 }
 
-.popup-header {
-  display: flex;
-  padding: 20px;
-  border-bottom: 1px solid #eee;
+.close-popup-btn:hover {
+  background: #F85959;
+  color: #ffffff;
 }
 
-.popup-restaurant-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
+.popup-restaurant-header {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 1.25rem;
+}
+
+.popup-restaurant-thumb {
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
   background-size: cover;
   background-position: center;
   flex-shrink: 0;
 }
 
-.popup-restaurant-info {
-  margin-left: 15px;
-  flex: 1;
-}
-
-.popup-restaurant-info h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.3rem;
+.popup-restaurant-details h3 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
 }
 
 .popup-location {
   display: flex;
   align-items: center;
-  color: #666;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
+  gap: 6px;
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 6px;
 }
 
 .popup-location svg {
-  margin-right: 5px;
   color: #F85959;
 }
 
-.popup-rating {
+.popup-rating-row {
   display: flex;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
+  font-size: 0.85rem;
 }
 
-.popup-rating svg {
-  color: #FFC107;
+.popup-rating-row svg {
+  color: #ffc107;
 }
 
-.popup-rating span {
-  margin-left: 8px;
-  font-weight: 600;
+.rating-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-left: 4px;
 }
 
-.reservation-form {
-  padding: 20px;
+/* Reservation Form */
+.reservation-form .form-group {
+  margin-bottom: 1.15rem;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 500;
-  color: #444;
-  font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  transition: border 0.2s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #F85959;
-}
-
-.form-row {
+.reservation-form label {
   display: flex;
-  gap: 15px;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 6px;
 }
 
-.form-row .form-group {
-  flex: 1;
+.field-icon {
+  color: #F85959;
+  font-size: 0.85rem;
 }
 
-.submit-reservation {
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #0f172a;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus {
+  border-color: #F85959;
+  box-shadow: 0 0 0 3px rgba(248, 89, 89, 0.2);
+}
+
+.form-row-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.submit-reservation-btn {
   width: 100%;
   background: #F85959;
-  color: white;
+  color: #ffffff;
   border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 0.85rem;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.2s;
-  margin-top: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(248, 89, 89, 0.35);
+  margin-top: 0.5rem;
 }
 
-.submit-reservation:hover {
-  background: #e04a4a;
+.submit-reservation-btn:hover {
+  background: #e04848;
+  box-shadow: 0 6px 18px rgba(248, 89, 89, 0.45);
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .popup-header {
-    flex-direction: column;
+/* Responsive Grid */
+@media (max-width: 640px) {
+  .restaurants-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .popup-restaurant-image {
-    width: 100%;
-    height: 150px;
-    margin-bottom: 15px;
-  }
-  
-  .popup-restaurant-info {
-    margin-left: 0;
-  }
-  
-  .form-row {
-    flex-direction: column;
-    gap: 0;
+
+  .form-row-grid {
+    grid-template-columns: 1fr;
   }
 }
