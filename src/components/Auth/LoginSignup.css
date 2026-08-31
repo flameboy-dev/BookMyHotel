@@ -32,14 +32,22 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .form-box form {
   display: flex;
   flex-direction: column;
-  gap: 8px; /* reduced gap */
+  gap: 8px;
+  /* reduced gap */
 }
 
 .form-box h2 {
