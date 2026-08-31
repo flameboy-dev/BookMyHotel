@@ -1,0 +1,120 @@
+/* AboutTimeline.css - Journey Milestones Styling */
+
+.about-timeline-section {
+  padding: 5.5rem 0;
+  background: #ffffff;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.timeline-badge {
+  display: inline-block;
+  color: #F85959;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.5px;
+}
+
+.timeline-subtitle {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+
+.timeline-card {
+  background: #f8fafc;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timeline-card:hover {
+  background: #ffffff;
+  transform: translateY(-6px);
+  border-color: #F85959;
+  box-shadow: 0 15px 35px rgba(248, 89, 89, 0.12);
+}
+
+.timeline-year-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.timeline-year {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #F85959;
+  letter-spacing: -0.5px;
+}
+
+.timeline-icon-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+.timeline-card:hover .timeline-icon-badge {
+  background: #F85959;
+  color: #ffffff;
+  border-color: #F85959;
+}
+
+.timeline-card-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-card-desc {
+  font-size: 0.925rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  .timeline-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+}

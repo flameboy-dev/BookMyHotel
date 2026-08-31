@@ -1,86 +1,67 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './MissionGoals.css';
 
 function MissionGoals() {
-  const [activeTab, setActiveTab] = useState('mission');
+  const values = [
+    {
+      icon: 'fa-solid fa-compass',
+      tag: 'OUR MISSION',
+      title: 'Effortless Bookings & Authentic Stays',
+      desc: 'Simplifying hotel reservations while discovering India\'s most extraordinary stays with 100% price transparency and zero booking fees.',
+      highlights: ['Zero hidden booking fees', 'Instant digital confirmation vouchers', 'Verified 5-star property standards'],
+    },
+    {
+      icon: 'fa-solid fa-eye',
+      tag: 'OUR VISION',
+      title: 'Empowering Every Journey',
+      desc: 'Building India\'s most trusted hospitality ecosystem, connecting travelers with handpicked boutique resorts and heritage retreats.',
+      highlights: ['Curated luxury destinations', 'Personalized concierge guidance', 'Seamless mobile check-in support'],
+    },
+    {
+      icon: 'fa-solid fa-gem',
+      tag: 'WHAT WE DO',
+      title: 'Curated Hospitality Platform',
+      desc: 'Partnering directly with premier hotels and fine dining establishments to deliver unforgettable getaways with 24/7 guest support.',
+      highlights: ['24/7 Concierge Support', 'Authentic guest reviews & ratings', 'Best price rate guarantee'],
+    },
+  ];
 
   return (
-    <div className="mission-goals-section">
-      <div className="mission-goals-container">
-
-        {/* Tabs */}
-        <div className="tabs-right">
-          <button 
-            className={activeTab === 'mission' ? 'active' : ''}
-            onClick={() => setActiveTab('mission')}
-          >
-            Our Mission
-          </button>
-          <button 
-            className={activeTab === 'goal' ? 'active' : ''}
-            onClick={() => setActiveTab('goal')}
-          >
-            Our Goal
-          </button>
-          <button 
-            className={activeTab === 'whatwedo' ? 'active' : ''}
-            onClick={() => setActiveTab('whatwedo')}
-          >
-            What We Do
-          </button>
+    <section className="mission-goals-section">
+      <div className="container">
+        <div className="mission-header text-center">
+          <span className="mission-badge">OUR CORE VALUES</span>
+          <h2 className="mission-main-title">Redefining Travel &amp; Hospitality</h2>
+          <p className="mission-main-subtitle">
+            Built on trust, transparency, and a passion for extraordinary hospitality.
+          </p>
         </div>
 
-        {/* Content */}
-        <div className="mission-goals-content">
-          <div className="mission-goals-image">
-            <img src="/Images/about.jpeg" alt="Handshake" />
-          </div>
-          <div className="mission-goals-text">
-            {activeTab === 'mission' && (
-              <>
-                <h3>Reliable Hosting You Can Trust</h3>
-                <p>
-                  In a world not so far away, beyond the buzz of crowded listings and noisy platforms,
-                  lies a place of seamless stays and trusted hospitality. Here, hosts and travelers
-                  connect effortlessly — where comfort meets convenience, and service meets sincerity.
-                </p>
-                <p>
-                  Experience smooth bookings, honest listings, and a space built for genuine getaways.
-                  Whether you're welcoming guests or finding your perfect stay — you're in good hands.
-                </p>
-              </>
-            )}
-            {activeTab === 'goal' && (
-              <>
-                <h3>Building Connections, One Stay at a Time</h3>
-                <p>
-                  Our goal is to create memorable experiences through authentic stays and exceptional service.
-                  We aim to connect travelers and hosts by simplifying the booking process and maintaining
-                  high standards of quality and trust.
-                </p>
-                <p>
-                  We envision a world where every trip feels like home and every host feels empowered.
-                </p>
-              </>
-            )}
-            {activeTab === 'whatwedo' && (
-              <>
-                <h3>What We Do</h3>
-                <p>
-                  We bridge the gap between hosts and travelers by providing a trusted platform that ensures safety,
-                  transparency, and a seamless booking experience. Our team works tirelessly to bring you curated listings,
-                  authentic reviews, and community support.
-                </p>
-                <p>
-                  We empower hosts to deliver unforgettable stays and help travelers find the perfect homes away from home.
-                </p>
-              </>
-            )}
-          </div>
+        <div className="mission-grid">
+          {values.map((item, index) => (
+            <div key={index} className="mission-value-card">
+              <div className="card-top">
+                <div className="value-icon-box">
+                  <i className={item.icon}></i>
+                </div>
+                <span className="value-tag">{item.tag}</span>
+              </div>
+              <h3 className="value-title">{item.title}</h3>
+              <p className="value-desc">{item.desc}</p>
+              
+              <ul className="value-bullets">
+                {item.highlights.map((bullet, bIndex) => (
+                  <li key={bIndex}>
+                    <i className="fa-solid fa-circle-check bullet-icon"></i>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-
       </div>
-    </div>
+    </section>
   );
 }
 
