@@ -1,53 +1,131 @@
 /* PageLoader.css */
 
 .page-loader {
-  position: fixed; /* Fixes to the viewport */
-  top: 0;         /* Aligns it to the top */
-  left: 0;        /* Aligns it to the left */
-  width: 100vw;   /* Full width of the viewport */
-  height: 100vh;  /* Full height of the viewport */
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
-  display: flex;  /* Use flexbox to center the content */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  z-index: 9999; /* Make sure it appears above other content */
-  opacity: 0; /* Start hidden for fade-in effect */
-  animation: fadeIn 0.5s forwards; /* Fade-in effect */
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  opacity: 1;
+  transition: opacity 0.35s ease-in-out, visibility 0.35s ease-in-out;
+}
+
+.page-loader.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.spinner-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(247, 148, 29, 0.15);
+  border-top-color: #f7941d;
+  border-right-color: #f7941d;
+  animation: spin 1s linear infinite;
 }
 
 .loader-logo {
-  max-width: 150px; /* Adjust the max width of the logo */
-  max-height: 150px; /* Adjust the max height of the logo */
-  animation: pulse 1.5s infinite, slideIn 0.5s forwards; /* Pulsing and slide-in effect */
+  width: 54px;
+  height: auto;
+  object-fit: contain;
+  animation: pulseLogo 1.8s ease-in-out infinite;
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
-  0% { opacity: 0; }    
-  100% { opacity: 1; }
+.loader-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
 }
 
-/* Slide-in animation */
-@keyframes slideIn {
+.brand-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+.brand-accent {
+  color: #f7941d;
+}
+
+.loader-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.loader-dots span {
+  width: 7px;
+  height: 7px;
+  background-color: #f7941d;
+  border-radius: 50%;
+  animation: dotsBounce 1.4s infinite ease-in-out both;
+}
+
+.loader-dots span:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.loader-dots span:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes spin {
   0% {
-    transform: translateY(-20px); /* Start above */
-    opacity: 0; /* Start invisible */
+    transform: rotate(0deg);
   }
   100% {
-    transform: translateY(0); /* End in normal position */
-    opacity: 1; /* Fully visible */
+    transform: rotate(360deg);
   }
 }
 
-/* Pulse animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1); /* Normal size */
+@keyframes pulseLogo {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.85;
   }
   50% {
-    transform: scale(1.1); /* Slightly larger */
+    transform: scale(1.05);
+    opacity: 1;
   }
-  100% {
-    transform: scale(1); /* Back to normal size */
+}
+
+@keyframes dotsBounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.3;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
