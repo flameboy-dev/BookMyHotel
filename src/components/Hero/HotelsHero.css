@@ -1,0 +1,175 @@
+/* HotelsHero.css - Integrated Sleek Hero Header */
+
+.hotels-hero-section {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  padding-top: 120px;
+  padding-bottom: 3.5rem;
+  overflow: hidden;
+}
+
+.hotels-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(247, 148, 29, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.hotels-hero-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.hotels-hero-content {
+  text-align: center;
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 16px;
+  background: rgba(247, 148, 29, 0.15);
+  border: 1px solid rgba(247, 148, 29, 0.3);
+  border-radius: 30px;
+  color: #f7941d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.hero-main-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+.title-gradient {
+  background: linear-gradient(135deg, #f7941d 0%, #ff6b6b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-main-subtitle {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+/* Stats Row */
+.hero-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  color: #f7941d;
+}
+
+.stat-icon.gold {
+  color: #fbbf24;
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Integrated Filter Wrapper */
+.hero-filter-wrapper {
+  width: 100%;
+  max-width: 1150px;
+}
+
+.hero-filter-wrapper .filter-bar-container {
+  margin: 0 !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .hero-main-title {
+    font-size: 2.75rem;
+  }
+
+  .hero-stats-row {
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hotels-hero-section {
+    padding-top: 100px;
+  }
+
+  .hero-main-title {
+    font-size: 2rem;
+  }
+
+  .hero-main-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}

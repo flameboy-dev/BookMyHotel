@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom';
 import './Hero.css';
 
 function Hero() {
-  // Typing animation 1: For "Explore your amazing city..."
   const exploreWords = ['amazing city', 'places', 'restaurants', 'hotels'];
   const [exploreIndex, setExploreIndex] = useState(0);
   const [exploreText, setExploreText] = useState('');
   const [exploreDeleting, setExploreDeleting] = useState(false);
   const [explorePause, setExplorePause] = useState(false);
+
+  const navigate = useNavigate();
+  const [keyword, setKeyword] = useState('');
+  const [destination, setDestination] = useState('');
 
   useEffect(() => {
     const current = exploreWords[exploreIndex];
@@ -41,7 +44,6 @@ function Hero() {
     return () => clearTimeout(timeout);
   }, [exploreText, exploreDeleting, explorePause, exploreIndex]);
 
-  // Typing animation 2: For "Find great places to [stay/eat/shop/visit]"
   const actionWords = ['stay', 'eat', 'shop', 'visit'];
   const [actionIndex, setActionIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
@@ -81,7 +83,12 @@ function Hero() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Search functionality will be implemented in the future!');
+    navigate('/hotels', {
+      state: {
+        destination,
+        keyword
+      }
+    });
   };
 
   return (
@@ -101,16 +108,29 @@ function Hero() {
             <form onSubmit={handleSubmit}>
               <div className="search-form-row">
                 <div className="search-input">
-                  <input type="text" placeholder="Ex: food, service, hotel" />
+                  <i className="fa-solid fa-magnifying-glass input-icon"></i>
+                  <input
+                    type="text"
+                    placeholder="Ex: food, service, hotel"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
+                  />
                 </div>
                 <div className="search-input">
-                  <select>
-                    <option value="">Where</option>
-                    <option value="shimla">Shimla, India</option>
-                    <option value="manali">Manali, India</option>
-                    <option value="varanasi">Varanasi, India</option>
-                    <option value="goa">Goa, India</option>
-                    <option value="kashmir">Kashmir, India</option>
+                  <i className="fa-solid fa-location-dot input-icon"></i>
+                  <select
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                  >
+                    <option value="">Where (All Locations)</option>
+                    <option value="Shimla">Shimla, India</option>
+                    <option value="Manali">Manali, India</option>
+                    <option value="Varanasi">Varanasi, India</option>
+                    <option value="Goa">Goa, India</option>
+                    <option value="Kashmir">Kashmir, India</option>
+                    <option value="Mumbai">Mumbai, India</option>
+                    <option value="Jaipur">Jaipur, India</option>
+                    <option value="Kedarnath">Kedarnath, India</option>
                   </select>
                 </div>
                 <div>
@@ -130,10 +150,10 @@ function Hero() {
               <i className="fa-solid fa-hotel"></i>
               <span>Hotel</span>
             </Link>
-            <a href="#" className="browse-option">
+            <Link to="/hotels" className="browse-option">
               <i className="fa-solid fa-location-dot"></i>
               <span>Places</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

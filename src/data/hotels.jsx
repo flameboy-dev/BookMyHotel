@@ -3,8 +3,11 @@ export const hotels = [
     id: 1,
     name: "Hotel Mountain View",
     location: "Shimla, India",
-    image: "/Images/hotel-1.jpg",
-    images: ["/Images/room-1.jpg", "/Images/room-2.jpg", "/Images/room-3.jpg"],
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"
+    ],
     price: 1200,
     description: "Nestled in the hills with breathtaking views of the Himalayan ranges.",
     rating: 4.8,
@@ -17,9 +20,12 @@ export const hotels = [
     id: 2,
     name: "Lakeside Resort",
     location: "Kashmir, India",
-    image: "/Images/hotel-2.jpg",
-    images: ["/Images/room-4.jpg", "/Images/room-5.jpg"],
-    price: 750,
+    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"
+    ],
+    price: 1500,
     description: "Luxury accommodations on the shores of Dal Lake with stunning views.",
     rating: 4.7,
     rooms: 1,
@@ -31,9 +37,11 @@ export const hotels = [
     id: 3,
     name: "Beach Paradise Hotel",
     location: "Goa, India",
-    image: "/Images/hotel-3.jpg",
-    images: ["/Images/room-6.jpg", "/Images/room-1.jpg", "/Images/room-2.jpg"],
-    price: 880,
+    image: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80"
+    ],
+    price: 1880,
     description: "Beachfront property with direct access to the white sands of Goa.",
     rating: 4.9,
     rooms: 3,
@@ -45,9 +53,11 @@ export const hotels = [
     id: 4,
     name: "River View Inn",
     location: "Varanasi, India",
-    image: "/Images/hotel-4.jpg",
-    images: ["/Images/room-1.jpg", "/Images/room-2.jpg"],
-    price: 900,
+    image: "https://images.unsplash.com/photo-1549294413-26f195200c16?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=80"
+    ],
+    price: 1100,
     description: "Traditional accommodations with stunning views of the Ganges River.",
     rating: 4.5,
     rooms: 1,
@@ -59,8 +69,10 @@ export const hotels = [
     id: 5,
     name: "Snow Peak Lodge",
     location: "Manali, India",
-    image: "/Images/hotel-5.jpg",
-    images: ["/Images/room-3.jpg", "/Images/room-5.jpg"],
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=800&q=80"
+    ],
     price: 1350,
     description: "Cozy lodge surrounded by pine forests and snow-capped mountains.",
     rating: 4.6,
@@ -73,8 +85,10 @@ export const hotels = [
     id: 6,
     name: "Sacred Valley Resort",
     location: "Kedarnath, India",
-    image: "/Images/hotel-4.jpg",
-    images: ["/Images/room-1.jpg", "/Images/room-2.jpg"],
+    image: "https://images.unsplash.com/photo-1506059612708-99d6c258160e?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"
+    ],
     price: 1100,
     description: "Peaceful retreat in the sacred valley with meditation spaces.",
     rating: 4.4,
@@ -82,5 +96,7 @@ export const hotels = [
     bathrooms: 1,
     guests: 2,
     amenities: ["Temple Access", "Yoga Studio", "Vegetarian Restaurant", "Free WiFi"]
-  },
+  }
 ];
+
+export default hotels;

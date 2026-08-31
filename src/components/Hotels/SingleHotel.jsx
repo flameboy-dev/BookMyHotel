@@ -1,15 +1,35 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { hotels } from '../../data/MoreHotels';
+import { hotels as initialHotels } from '../../data/MoreHotels';
+import { hotels as featuredHotels } from '../../data/hotels';
 import './SingleHotel.css';
 import { FaCheckCircle, FaTimes, FaCalendarAlt, FaUserAlt } from 'react-icons/fa';
 
 function SingleHotel() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const hotel = hotels.find(h => h.id.toString() === id);
+  
+  const numericId = Number(id);
+  const hotel = initialHotels.find(h => h.id === numericId) || featuredHotels.find(h => h.id === numericId);
+
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
+
+  const todayStr = new Date().toISOString().split('T')[0];
+
+  // Helper to normalize price format (supports both number and object)
+  const getPriceForType = (type) => {
+    if (!hotel || !hotel.price) return 0;
+    if (typeof hotel.price === 'number') return hotel.price;
+    if (typeof hotel.price === 'object') {
+      return hotel.price[type] || Object.values(hotel.price)[0] || 0;
+    }
+    return 0;
+  };
+
+  const roomOptions = hotel && typeof hotel.price === 'object'
+    ? Object.keys(hotel.price)
+    : ["Standard Room", "Deluxe Room", "Suite"];
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -17,14 +37,20 @@ function SingleHotel() {
     phone: '',
     email: '',
     aadharNo: '',
-    roomType: '',
+    roomType: roomOptions[0] || 'Standard Room',
     checkInDate: '',
     checkOutDate: '',
     guests: 1
   });
 
   if (!hotel) {
-    return <div className="single-hotel-error">Hotel not found.</div>;
+    return (
+      <div className="container" style={{ textAlign: 'center', padding: '4rem 1rem' }}>
+        <h2>Hotel Not Found</h2>
+        <p>The requested hotel details could not be found.</p>
+        <button className="btn btn-primary" onClick={() => navigate('/hotels')}>Back to Hotels</button>
+      </div>
+    );
   }
 
   const roomLabels = ["Bedroom", "Deluxe Room", "Super Deluxe Room"];
@@ -40,9 +66,7 @@ function SingleHotel() {
   const calculateTotal = () => {
     const { checkInDate, checkOutDate, roomType, guests } = formData;
 
-    if (!checkInDate || !checkOutDate || !roomType || !hotel.price[roomType]) {
-      return 0;
-    }
+    if (!checkInDate || !checkOutDate) return 0;
 
     const checkIn = new Date(checkInDate);
     const checkOut = new Date(checkOutDate);
@@ -51,20 +75,21 @@ function SingleHotel() {
 
     const diffTime = Math.abs(checkOut - checkIn);
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    const pricePerNight = hotel.price[roomType];
+    const pricePerNight = getPriceForType(roomType);
     const roomsNeeded = Math.ceil(Number(guests) / 2);
 
     return diffDays * pricePerNight * roomsNeeded;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const checkIn = new Date(formData.checkInDate);
     const checkOut = new Date(formData.checkOutDate);
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Remove time portion
+    today.setHours(0, 0, 0, 0);
 
+    // Date validation
     if (checkIn < today) {
       alert('Check-in date cannot be in the past.');
       return;
@@ -77,33 +102,27 @@ function SingleHotel() {
 
     const totalAmount = calculateTotal();
 
-    const bookingData = {
+    const newBooking = {
+      id: 'BK-' + Date.now(),
+      hotelId: hotel.id,
+      hotelName: hotel.name,
+      hotelImage: hotel.image,
+      location: hotel.location,
       ...formData,
       totalAmount,
+      bookingDate: new Date().toLocaleDateString(),
+      status: 'Confirmed'
     };
 
-    try {
-      const response = await fetch('http://localhost:8080/api/bookings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bookingData),
-      });
+    // Save booking to localStorage for client persistence
+    const existingBookings = JSON.parse(localStorage.getItem('bmh_bookings') || '[]');
+    existingBookings.push(newBooking);
+    localStorage.setItem('bmh_bookings', JSON.stringify(existingBookings));
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Booking confirmed:', data);
-        setShowConfirmation(true);
-        setTimeout(() => {
-          setShowBookingForm(false);
-        }, 3000);
-      } else {
-        console.error('Booking failed.');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    setShowConfirmation(true);
+    setTimeout(() => {
+      setShowBookingForm(false);
+    }, 2500);
   };
 
   const closeConfirmation = () => {
@@ -114,14 +133,12 @@ function SingleHotel() {
       phone: '',
       email: '',
       aadharNo: '',
-      roomType: '',
+      roomType: roomOptions[0] || 'Standard Room',
       checkInDate: '',
       checkOutDate: '',
       guests: 1
     });
   };
-
-  const todayStr = new Date().toISOString().split('T')[0];
 
   return (
     <section className="single-hotel">
@@ -199,7 +216,6 @@ function SingleHotel() {
                   onChange={handleInputChange}
                   required
                   placeholder="1234-5678-9012"
-                  pattern="\d{4}-\d{4}-\d{4}"
                 />
               </div>
 
@@ -212,14 +228,11 @@ function SingleHotel() {
                   onChange={handleInputChange}
                   required
                 >
-                  <option value="">Select a room type</option>
-                  {hotel.price && typeof hotel.price === 'object' ? (
-                    Object.keys(hotel.price).map((type) => (
-                      <option key={type} value={type}>{type}</option>
-                    ))
-                  ) : (
-                    <option disabled>No room types available</option>
-                  )}
+                  {roomOptions.map((type) => (
+                    <option key={type} value={type}>
+                      {type} (₹{getPriceForType(type)} / night)
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -256,7 +269,7 @@ function SingleHotel() {
                   id="guests"
                   name="guests"
                   min="1"
-                  max={hotel.guests}
+                  max={hotel.guests || 10}
                   value={formData.guests}
                   onChange={handleInputChange}
                   required
@@ -269,12 +282,10 @@ function SingleHotel() {
               <div className="price-summary">
                 <div className="price-item">
                   <span>Price per night:</span>
-                  <span>₹{formData.roomType && hotel.price[formData.roomType]}</span>
+                  <span>₹{getPriceForType(formData.roomType)}</span>
                 </div>
                 {formData.checkInDate &&
                   formData.checkOutDate &&
-                  formData.roomType &&
-                  hotel.price[formData.roomType] &&
                   new Date(formData.checkOutDate) > new Date(formData.checkInDate) && (
                     <div className="price-item total">
                       <span>Total estimate:</span>
@@ -299,7 +310,6 @@ function SingleHotel() {
               <p><strong>Guest:</strong> {formData.fullName}</p>
               <p><strong>Email:</strong> {formData.email}</p>
               <p><strong>Phone:</strong> {formData.phone}</p>
-              <p><strong>Aadhar:</strong> {formData.aadharNo}</p>
               <p><strong>Room Type:</strong> {formData.roomType}</p>
               <p><strong>Dates:</strong> {formData.checkInDate} to {formData.checkOutDate}</p>
               <p><strong>Total:</strong> ₹{calculateTotal()}</p>
@@ -319,9 +329,9 @@ function SingleHotel() {
             <h1 className="hotel-title">{hotel.name}</h1>
             <p className="hotel-location"><i className="fa-solid fa-location-dot"></i> {hotel.location}</p>
             <div className="hotel-room-details">
-              <span>🛏 {hotel.rooms} Bedrooms</span>
-              <span>🛁 {hotel.bathrooms} Bathrooms</span>
-              <span>👥 Sleeps {hotel.guests} Guests</span>
+              <span>🛏 {hotel.rooms || 2} Bedrooms</span>
+              <span>习 {hotel.bathrooms || 1} Bathrooms</span>
+              <span>👥 Sleeps {hotel.guests || 4} Guests</span>
             </div>
             <div className="hotel-description">
               <h2>About This Hotel</h2>
@@ -333,20 +343,14 @@ function SingleHotel() {
                 <p>{hotel.rating} ★</p>
               </div>
               <div className="info-item">
-                <h4>Price per night:</h4>
-                <p>
-                  {Object.entries(hotel.price).map(([type, price]) => (
-                    <span key={type} style={{ display: 'block' }}>
-                      {type}: ₹{price}
-                    </span>
-                  ))}
-                </p>
+                <h4>Starting Price:</h4>
+                <p>₹{getPriceForType(roomOptions[0])} / night</p>
               </div>
             </div>
             <div className="hotel-amenities">
               <h3>Amenities</h3>
               <ul>
-                {hotel.amenities.map((amenity, index) => (
+                {hotel.amenities?.map((amenity, index) => (
                   <li key={index}><i className="fa fa-check"></i> {amenity}</li>
                 ))}
               </ul>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './LoginSignup.css';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
@@ -10,7 +10,7 @@ function AdminLogin() {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate(); // <-- used for navigation
+  const navigate = useNavigate();
 
   const validateForm = () => {
     const newErrors = {};
@@ -34,8 +34,8 @@ function AdminLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert('Logged in successfully');
-      navigate('/admin'); // <-- redirect to Admin Dashboard
+      alert('Admin logged in successfully');
+      navigate('/admin');
     }
   };
 
@@ -81,9 +81,9 @@ function AdminLogin() {
               <small className="error">{errors.password}</small>
             )}
 
-            <a href="#" className="forgot-password">
+            <Link to="/forgot-password" className="forgot-password">
               Forgot password?
-            </a>
+            </Link>
 
             <button type="submit" className="submit-btn">
               Log In

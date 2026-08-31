@@ -2,14 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import './FunFactsSection.css';
 
 const countersData = [
-  { number: 100000, label: 'Happy Customers' },
-  { number: 40000, label: 'Destination Places' },
-  { number: 87000, label: 'Hotels' },
-  { number: 56400, label: 'Restaurants' },
+  { number: 100000, label: 'Happy Customers', icon: 'fa-users' },
+  { number: 40000, label: 'Destination Places', icon: 'fa-map-location-dot' },
+  { number: 87000, label: 'Luxury Hotels', icon: 'fa-hotel' },
+  { number: 56400, label: 'Top Restaurants', icon: 'fa-utensils' },
 ];
 
 const FunFactsSection = () => {
-  const sectionRef = useRef(null);  // Reference for the section to observe
+  const sectionRef = useRef(null);
 
   useEffect(() => {
     const formatNumber = (number) => {
@@ -37,13 +37,13 @@ const FunFactsSection = () => {
           counters.forEach((counter) => {
             updateCounter(counter);
           });
-          observer.disconnect();  // Stop observing once animation is triggered
+          observer.disconnect();
         }
       });
     };
 
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5,  // Trigger when 50% of the section is visible
+      threshold: 0.5,
     });
 
     if (sectionRef.current) {
@@ -55,20 +55,24 @@ const FunFactsSection = () => {
     <section
       className="ftco-section ftco-counter img"
       id="section-counter"
-      ref={sectionRef}  // Add the reference here
+      ref={sectionRef}
       style={{ backgroundImage: 'url(Images/bg_4.jpg)' }}
     >
       <div className="container">
         <div className="heading-wrapper">
-          <h2 className="mb-4">Some fun facts</h2>
-          <span className="subheading">More than 100,000 websites hosted</span>
+          <p className="subheading-tag">MILESTONES</p>
+          <h2 className="mb-4">Our Growing Community</h2>
+          <span className="subheading">Over 100,000 happy travelers & 80,000+ verified stays</span>
         </div>
 
         <div className="counters-wrapper">
           {countersData.map((counter, index) => (
             <div className="counter-card" key={index}>
+              <div className="counter-icon-box">
+                <i className={`fa-solid ${counter.icon}`}></i>
+              </div>
               <strong className="number" data-number={counter.number}>0</strong>
-              <span>{counter.label}</span>
+              <span className="counter-label">{counter.label}</span>
             </div>
           ))}
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HotelCard from './HotelCard';
 import { hotels } from '../../data/hotels';
 import './Hotels.css';
@@ -16,7 +17,7 @@ function Hotels() {
           {hotels.map(hotel => (
             <HotelCard
               key={hotel.id}
-              id={hotel.id} // 👈 Add this line
+              id={hotel.id}
               name={hotel.name}
               location={hotel.location}
               image={hotel.image}
@@ -29,7 +30,7 @@ function Hotels() {
         </div>
 
         <div className="more-button-container">
-          <a href="#" className="hotel-link-more">More..</a>
+          <Link to="/hotels" className="hotel-link-more">More..</Link>
         </div>
       </div>
     </section>

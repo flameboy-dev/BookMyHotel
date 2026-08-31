@@ -1,56 +1,55 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaStar, FaLocationDot, FaArrowRight } from 'react-icons/fa6';
 
 function HotelCard({ id, name, location, image, price, description, rating, amenities }) {
-  const renderStars = () => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 !== 0;
-
-    for (let i = 0; i < fullStars; i++) {
-      stars.push(<i key={`star-${i}`} className="icon-star"></i>);
-    }
-
-    if (hasHalfStar) {
-      stars.push(<i key="half-star" className="icon-star-half"></i>);
-    }
-
-    return stars;
-  };
+  const displayPrice = typeof price === 'object'
+    ? Math.min(...Object.values(price))
+    : (Number(price) || 0);
 
   return (
     <div className="hotel-card">
-      <div
-        className="hotel-image"
-        style={{ backgroundImage: `url(${image})` }}
-      >
-        <div className="hotel-price">₹{price}/night</div>
+      <div className="hotel-image-wrapper">
+        <div
+          className="hotel-image-bg"
+          style={{ backgroundImage: `url(${image})` }}
+        />
+        <div className="hotel-gradient-overlay"></div>
+        <div className="hotel-rating-badge">
+          <FaStar className="star-icon" />
+          <span>{rating}</span>
+        </div>
+        <div className="hotel-price-badge">
+          <span className="price-amount">₹{displayPrice.toLocaleString()}</span>
+          <span className="price-period">/night</span>
+        </div>
       </div>
+
       <div className="hotel-content">
-        <h3 className="hotel-name">{name}</h3>
+        <h3 className="hotel-name" title={name}>{name}</h3>
 
         <div className="hotel-location">
-          <i className="fa-solid fa-location-dot"></i>
+          <FaLocationDot className="location-icon" />
           <span>{location}</span>
         </div>
 
         <p className="hotel-description">{description}</p>
+
         <div className="hotel-amenities">
-          {amenities.map((amenity, index) => (
+          {amenities?.slice(0, 3).map((amenity, index) => (
             <span key={index} className="hotel-amenity">{amenity}</span>
           ))}
-        </div>
-        <div className="hotel-rating">
-          <div className="hotel-stars">
-            <i className="fa-solid fa-star"></i>
-            &nbsp;
-            {renderStars()}
-            <span className="hotel-rating-text">{rating} Rating</span>
-          </div>
+          {amenities?.length > 3 && (
+            <span className="hotel-amenity extra">+{amenities.length - 3}</span>
+          )}
         </div>
 
-        {/* Update this anchor tag to Link */}
-        <Link to={`/hotels/${id}`} className="hotel-link">Book Now</Link>
+        <div className="hotel-card-footer">
+          <Link to={`/hotels/${id}`} className="hotel-link">
+            <span>Book Stay</span>
+            <FaArrowRight className="link-arrow" />
+          </Link>
+        </div>
       </div>
     </div>
   );

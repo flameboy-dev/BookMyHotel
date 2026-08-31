@@ -1,90 +1,107 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear();
-  
+  const [email, setEmail] = useState('');
+  const [subscribed, setSubscribed] = useState(false);
+
+  const handleSubscribe = (e) => {
+    e.preventDefault();
+    if (email.trim()) {
+      setSubscribed(true);
+      setEmail('');
+      setTimeout(() => setSubscribed(false), 4000);
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-container">
+          {/* Column 1: Brand & Socials */}
           <div className="footer-column footer-about">
-            <h3 className="footer-title">About BookMyHotel</h3>
-            <p>
-            Far beyond the Aravallis and Kerala's backwaters, away from the city's rush, hidden stays await — discover them with BookMyHotel.
+            <div className="footer-brand-logo">
+              <Link to="/">
+                <img src="/Images/logo.png" alt="BookMyHotel" className="footer-logo-img" />
+              </Link>
+            </div>
+            <p className="footer-desc">
+              Discover and book handpicked luxury stays, heritage resorts, and top dining destinations across India — effortlessly.
             </p>
             <div className="footer-social">
-              <a href="#" className="footer-social-icon">
-              <i className="fa-brands fa-facebook-f"></i>
+              <a href="#" className="footer-social-icon" aria-label="Facebook">
+                <i className="fa-brands fa-facebook-f"></i>
               </a>
-              <a href="#" className="footer-social-icon">
-              <i className="fa-brands fa-x-twitter"></i>
+              <a href="#" className="footer-social-icon" aria-label="Twitter">
+                <i className="fa-brands fa-x-twitter"></i>
               </a>
-              <a href="#" className="footer-social-icon">
-              <i className="fa-brands fa-instagram"></i>
+              <a href="#" className="footer-social-icon" aria-label="Instagram">
+                <i className="fa-brands fa-instagram"></i>
               </a>
-              <a href="#" className="footer-social-icon">
-              <i className="fa-brands fa-linkedin-in"></i>
+              <a href="#" className="footer-social-icon" aria-label="LinkedIn">
+                <i className="fa-brands fa-linkedin-in"></i>
               </a>
             </div>
           </div>
-          
+
+          {/* Column 2: Quick Links */}
           <div className="footer-column">
-            <h3 className="footer-title">Information</h3>
+            <h3 className="footer-title">Quick Navigation</h3>
             <ul className="footer-links">
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> About</a>
+                <Link to="/"><i className="fa-solid fa-chevron-right link-arrow"></i> Home</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Services</a>
+                <Link to="/hotels"><i className="fa-solid fa-chevron-right link-arrow"></i> Browse Hotels</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Terms and Conditions</a>
+                <Link to="/restaurant"><i className="fa-solid fa-chevron-right link-arrow"></i> Restaurants</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Privacy Policy</a>
+                <Link to="/about"><i className="fa-solid fa-chevron-right link-arrow"></i> About Us</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Best Price Guarantee</a>
+                <Link to="/contact"><i className="fa-solid fa-chevron-right link-arrow"></i> Contact Support</Link>
               </li>
             </ul>
           </div>
-          
+
+          {/* Column 3: Portals & Account */}
           <div className="footer-column">
-            <h3 className="footer-title">Customer Support</h3>
+            <h3 className="footer-title">Access & Portals</h3>
             <ul className="footer-links">
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> FAQ</a>
+                <Link to="/admin/login"><i className="fa-solid fa-chevron-right link-arrow"></i> Admin Portal</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Payment Option</a>
+                <Link to="/hotel/login"><i className="fa-solid fa-chevron-right link-arrow"></i> Hotel Manager Login</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Booking Tips</a>
+                <Link to="/user"><i className="fa-solid fa-chevron-right link-arrow"></i> Guest Dashboard</Link>
               </li>
               <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> How it works</a>
-              </li>
-              <li className="footer-link">
-                <a href="#"><i className="icon-arrow-right"></i> Contact Us</a>
+                <Link to="/auth"><i className="fa-solid fa-chevron-right link-arrow"></i> Sign In / Register</Link>
               </li>
             </ul>
           </div>
-          
+
+          {/* Column 4: Contact & Newsletter */}
           <div className="footer-column">
-            <h3 className="footer-title">Have a Questions?</h3>
+            <h3 className="footer-title">Contact & Updates</h3>
             <div className="footer-contact">
               <div className="footer-contact-item">
                 <div className="footer-contact-icon">
-                <i className="fa-solid fa-location-dot"></i>
+                  <i className="fa-solid fa-location-dot"></i>
                 </div>
                 <div className="footer-contact-text">
-                  NH17, Namkhana, India
+                  NH17, Namkhana, West Bengal, India
                 </div>
               </div>
               <div className="footer-contact-item">
                 <div className="footer-contact-icon">
-                <i className="fa-solid fa-phone"></i>
+                  <i className="fa-solid fa-phone"></i>
                 </div>
                 <div className="footer-contact-text">
                   +91 7407969835
@@ -92,25 +109,46 @@ function Footer() {
               </div>
               <div className="footer-contact-item">
                 <div className="footer-contact-icon">
-                <i className="fa-solid fa-envelope"></i>
+                  <i className="fa-solid fa-envelope"></i>
                 </div>
                 <div className="footer-contact-text">
                   shubhajit.giri@tnu.in
                 </div>
               </div>
             </div>
-            
+
             <div className="footer-subscribe">
-              <form className="footer-subscribe-form">
-                <input type="email" className="footer-subscribe-input" placeholder="Your Email" />
-                <button type="submit" className="footer-subscribe-button">Subscribe</button>
-              </form>
+              {subscribed ? (
+                <div className="subscribe-success">
+                  <i className="fa-solid fa-circle-check"></i> Thank you for subscribing!
+                </div>
+              ) : (
+                <form className="footer-subscribe-form" onSubmit={handleSubscribe}>
+                  <input
+                    type="email"
+                    className="footer-subscribe-input"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <button type="submit" className="footer-subscribe-button">Subscribe</button>
+                </form>
+              )}
             </div>
           </div>
         </div>
-        
-        <div className="footer-copyright">
-          <p>Copyright &copy; {currentYear} All rights reserved | BookMyHotel</p>
+
+        {/* Footer Bottom Row */}
+        <div className="footer-bottom">
+          <p className="footer-copyright">
+            Copyright &copy; {currentYear} <strong>BookMyHotel</strong>. All rights reserved.
+          </p>
+          <div className="footer-payments">
+            <span className="payment-badge"><i className="fa-brands fa-cc-visa"></i> Visa</span>
+            <span className="payment-badge"><i className="fa-brands fa-cc-mastercard"></i> Mastercard</span>
+            <span className="payment-badge"><i className="fa-solid fa-mobile-screen"></i> UPI / GPay</span>
+          </div>
         </div>
       </div>
     </footer>

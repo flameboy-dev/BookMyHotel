@@ -1,125 +1,130 @@
-/* General Section Styles */
+/* FunFactsSection.css - Modern Statistics Counter Cards */
+
 .ftco-section {
-    position: relative;
-    padding: 120px 0;
-    color: #fff;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  
-  .ftco-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(10, 108, 52, 0.6); /* <- Dark shade overlay */
-    z-index: 0;
-  }
-  
-  .ftco-section > * {
-    position: relative;
-    z-index: 1;
-  }
-  
-  
-  .ftco-section > * {
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* Container to control max width */
-  .container {
-    max-width: 1200px;
-    width: 90%;
-    margin: auto;
-  }
-  
-  /* Heading styles */
-  .heading-wrapper {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  
+  position: relative;
+  padding: 100px 0;
+  color: #fff;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ftco-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.88) 100%);
+  z-index: 0;
+}
+
+.ftco-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Heading Styles */
+.heading-wrapper {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.subheading-tag {
+  color: #F85959;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.heading-wrapper h2 {
+  font-size: 2.25rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.heading-wrapper .subheading {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #cbd5e1;
+}
+
+/* Counters Grid */
+.counters-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Single Counter Card */
+.counter-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  padding: 30px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.counter-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+  border-color: rgba(248, 89, 89, 0.4);
+}
+
+.counter-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: rgba(248, 89, 89, 0.18);
+  border: 1px solid rgba(248, 89, 89, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #F85959;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.counter-card .number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.counter-card .counter-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: 0.35rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
   .heading-wrapper h2 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #fff;
+    font-size: 1.85rem;
   }
-  
-  .heading-wrapper .subheading {
-    font-size: 18px;
-    font-weight: 300;
-    color: #dcdcdc;
-  }
-  
-  /* Counters flex */
+
   .counters-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  /* Single Counter Card */
-  .counter-card {
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    padding: 40px 20px;
-    min-width: 200px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  .counters-wrapper {
+    grid-template-columns: 1fr;
   }
-  
-  .counter-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .counter-card .number {
-    font-size: 30px;
-    font-weight: bold;
-    color:white;
-  }
-  
-  .counter-card span {
-    font-size: 20px;
-    font-weight: 300;
-    color: #fff;
-    margin-top: 10px;
-  }
-  
-  /* Responsive */
-  @media (max-width: 768px) {
-    .heading-wrapper h2 {
-      font-size: 30px;
-    }
-  
-    .counter-card {
-      min-width: 150px;
-      padding: 30px 15px;
-    }
-  
-    .counter-card .number {
-      font-size: 36px;
-    }
-  
-    .counter-card span {
-      font-size: 18px;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .counter-card {
-      width: 100%;
-    }
-  }
-  
+}

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './FilterBar.css';
 
 const RestaurantFilterBar = ({ onSearch }) => {
+  const todayStr = new Date().toISOString().split('T')[0];
+
   const [filters, setFilters] = useState({
     location: '',
     date: '',
@@ -12,12 +14,21 @@ const RestaurantFilterBar = ({ onSearch }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFilters(prev => ({ ...prev, [name]: value }));
+    setFilters((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(filters);
+
+    // Date validation: Do not allow past reservation dates
+    if (filters.date && filters.date < todayStr) {
+      alert('Reservation date cannot be in the past.');
+      return;
+    }
+
+    if (onSearch) {
+      onSearch(filters);
+    }
   };
 
   return (
@@ -44,17 +55,17 @@ const RestaurantFilterBar = ({ onSearch }) => {
             name="location"
             value={filters.location}
             onChange={handleChange}
-            aria-required="true"
           >
             <option value="">Select City</option>
-            <option value="Delhi">Delhi</option>
             <option value="Mumbai">Mumbai</option>
-            <option value="Bangalore">Bangalore</option>
-            <option value="Hyderabad">Hyderabad</option>
+            <option value="Goa">Goa</option>
+            <option value="Dharamshala">Dharamshala</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Pune">Pune</option>
           </select>
         </div>
 
-        {/* Date */}
+        {/* Reservation Date */}
         <div className="filter-group">
           <label htmlFor="date">Reservation Date</label>
           <input
@@ -64,7 +75,7 @@ const RestaurantFilterBar = ({ onSearch }) => {
             value={filters.date}
             onChange={handleChange}
             aria-label="Reservation date"
-            min={new Date().toISOString().split('T')[0]}
+            min={todayStr}
           />
         </div>
 
@@ -92,11 +103,10 @@ const RestaurantFilterBar = ({ onSearch }) => {
             className="rating-select"
           >
             <option value="">Any Cuisine</option>
-            <option value="Indian">Indian</option>
-            <option value="Italian">Italian</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Mexican">Mexican</option>
-            <option value="South Indian">South Indian</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Organic">Organic / Healthy</option>
+            <option value="Curry">Bengali / Indian Curry</option>
+            <option value="Pasta">Pasta & Pizza</option>
           </select>
         </div>
 
@@ -111,11 +121,8 @@ const RestaurantFilterBar = ({ onSearch }) => {
             className="rating-select"
           >
             <option value="">Any Rating</option>
-            <option value="5">★★★★★ (5 stars)</option>
-            <option value="4">★★★★☆ (4+ stars)</option>
-            <option value="3">★★★☆☆ (3+ stars)</option>
-            <option value="2">★★☆☆☆ (2+ stars)</option>
-            <option value="1">★☆☆☆☆ (1+ stars)</option>
+            <option value="4.8">★★★★★ (4.8+ stars)</option>
+            <option value="4.5">★★★★☆ (4.5+ stars)</option>
           </select>
         </div>
 

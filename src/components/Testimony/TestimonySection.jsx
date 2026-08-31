@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Testimony.css';
 import testimonials from '../../data/testimonialData';
 
 const TestimonySection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [transitionDirection, setTransitionDirection] = useState('right');
-  const styles = {color: "#f85959", fontSize: "0.9rem", letterSpacing: "1px"};
 
   const nextTestimonial = () => {
     setTransitionDirection('right');
@@ -25,7 +25,7 @@ const TestimonySection = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextTestimonial();
-    }, 5000); // Change testimonial every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -35,24 +35,31 @@ const TestimonySection = () => {
       <div className="testimony-container">
         {/* Left - Why Choose Us */}
         <div className="left-section">
-          <h4 style={styles}>Best Directory Website</h4>
+          <span className="section-tag">ABOUT BOOKMYHOTEL</span>
           <h2>Why Choose Us?</h2>
-          <p>We make hotel booking effortless with top-rated stays that match your budget and preferences. Our smart Recommender System ensures personalized suggestions, while facial recognition check-in/out adds convenience.</p>
-          <p>Enjoy seamless food & beverage ordering, 24/7 dedicated support, and our Best Price Guarantee for unbeatable deals. Your comfort, our priority!</p>
-          <a href="#" className="read-more">Read more</a>
+          <p>
+            We make hotel booking effortless with handpicked luxury stays, boutique resorts, and budget-friendly hotels tailored to your travel style.
+          </p>
+          <p>
+            Enjoy real-time instant booking confirmation, verified guest reviews, zero hidden fees, and round-the-clock 24/7 concierge assistance. Your comfort and peace of mind is our highest priority!
+          </p>
+          <Link to="/about" className="read-more">
+            <span>Read Our Story</span>
+            <i className="fa-solid fa-arrow-right link-arrow"></i>
+          </Link>
         </div>
 
-        {/* Right - Guest Says */}
+        {/* Right - Guest Testimony */}
         <div className="right-section">
-          <h3>Testimony</h3>
-          <h2>Our Guests Says</h2>
+          <span className="section-tag">TESTIMONIALS</span>
+          <h2>What Our Guests Say</h2>
           <div className="testimony-carousel">
             <div className="carousel-wrapper">
               {testimonials.map((testimonial, index) => (
-                <div 
+                <div
                   key={testimonial.id}
                   className={`testimony-card ${
-                    index === currentTestimonial ? 'active' : 
+                    index === currentTestimonial ? 'active' :
                     index === (currentTestimonial - 1 + testimonials.length) % testimonials.length ? 'left' :
                     index === (currentTestimonial + 1) % testimonials.length ? 'right' : ''
                   } ${
@@ -60,20 +67,29 @@ const TestimonySection = () => {
                   }`}
                 >
                   <div className="user-avatar">
-                    <img src={testimonial.image} alt="Guest" />
+                    <img src={testimonial.image} alt={testimonial.name} />
                     <span className="quote-icon"><i className="fa-solid fa-quote-right"></i></span>
                   </div>
                   <div className="testimony-content">
-                    <p className="quote">{testimonial.quote}</p>
+                    <div className="star-rating">
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                      <i className="fa-solid fa-star"></i>
+                    </div>
+                    <p className="quote">"{testimonial.quote}"</p>
                     <p className="guest-name">{testimonial.name}</p>
-                    <p className="guest-location">{testimonial.location}</p>
+                    <p className="guest-location">
+                      <i className="fa-solid fa-location-dot"></i> {testimonial.location}
+                    </p>
                   </div>
                 </div>
               ))}
             </div>
             <div className="carousel-controls">
-              <button className="carousel-arrow left" onClick={prevTestimonial}>
-                &lt;
+              <button className="carousel-arrow left" onClick={prevTestimonial} aria-label="Previous testimony">
+                <i className="fa-solid fa-chevron-left"></i>
               </button>
               <div className="carousel-dots">
                 {testimonials.map((_, index) => (
@@ -81,11 +97,12 @@ const TestimonySection = () => {
                     key={index}
                     className={`dot ${index === currentTestimonial ? 'active' : ''}`}
                     onClick={() => goToTestimonial(index)}
+                    aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
               </div>
-              <button className="carousel-arrow right" onClick={nextTestimonial}>
-                &gt;
+              <button className="carousel-arrow right" onClick={nextTestimonial} aria-label="Next testimony">
+                <i className="fa-solid fa-chevron-right"></i>
               </button>
             </div>
           </div>

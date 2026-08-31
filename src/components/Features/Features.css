@@ -1,84 +1,95 @@
-body{
-  background: #F8FAFF;
-}
+/* Features.css - Clean 4 Feature Cards Layout */
+
 .features-section {
-  padding: 5rem 0;
-  background-color: var(--light-color);
+  padding: 4.5rem 0;
+  background-color: #fafafa;
 }
 
 .features-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.75rem;
 }
 
 .feature-card {
-  flex: 1;
-  min-width: 250px;
+  position: relative;
   text-align: center;
-  padding: 2rem 1.5rem;
-  border-radius: 4px;
-  background-color: white;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  padding: 2.5rem 1.75rem 2rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Top Accent Bar */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #F85959 0%, #ff7a7a 100%);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  background-color: var(--primary-color);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px -6px rgba(15, 23, 42, 0.08);
+  border-color: rgba(248, 89, 89, 0.3);
 }
 
-/* Title & description color change on hover */
-.feature-card:hover .feature-title,
-.feature-card:hover .feature-description {
-  color: #ffffff;
+.feature-card:hover::before {
+  opacity: 1;
 }
 
-/* Circle background and icon color change on hover */
-.feature-card:hover .feature-icon {
-  background-color: #ffffff;
-  color: var(--primary-color);
-}
-
-/* Smooth transitions */
-.feature-title, 
-.feature-description, 
+/* Modern Tinted Icon Box */
 .feature-icon {
-  transition: color 0.3s ease, background-color 0.3s ease;
-}
-
-.feature-icon {
-  width: 80px;
-  height: 80px;
+  width: 68px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
-  background-color: var(--primary-color);
-  color: white;
-  border-radius: 50%;
-  font-size: 2rem;
+  margin: 0 auto 1.35rem;
+  background: rgba(248, 89, 89, 0.08);
+  color: #F85959;
+  border-radius: 18px;
+  font-size: 1.65rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(248, 89, 89, 0.15);
+}
+
+.feature-card:hover .feature-icon {
+  background: linear-gradient(135deg, #F85959 0%, #ff6b6b 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: scale(1.08) rotate(4deg);
+  box-shadow: 0 10px 22px rgba(248, 89, 89, 0.35);
 }
 
 .feature-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--dark-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.65rem;
+  color: #0f172a;
+  line-height: 1.35;
+  letter-spacing: -0.3px;
 }
 
 .feature-description {
-  color: var(--secondary-color);
+  color: #64748b;
+  font-size: 0.9rem;
   line-height: 1.6;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 640px) {
   .features-container {
-    flex-direction: column;
-  }
-  
-  .feature-card {
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 }

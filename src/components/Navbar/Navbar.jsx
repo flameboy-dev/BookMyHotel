@@ -6,7 +6,6 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuDropdownOpen, setIsMenuDropdownOpen] = useState(false);
-  const [isSignupDropdownOpen, setIsSignupDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -21,7 +20,6 @@ function Navbar() {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Menu dropdown
   const toggleMenuDropdown = () => {
     if (window.innerWidth <= 991) {
       setIsMenuDropdownOpen(!isMenuDropdownOpen);
@@ -37,25 +35,6 @@ function Navbar() {
   const closeMenuDropdown = () => {
     if (window.innerWidth > 991) {
       setIsMenuDropdownOpen(false);
-    }
-  };
-
-  // Signup dropdown
-  const toggleSignupDropdown = () => {
-    if (window.innerWidth <= 991) {
-      setIsSignupDropdownOpen(!isSignupDropdownOpen);
-    }
-  };
-
-  const openSignupDropdown = () => {
-    if (window.innerWidth > 991) {
-      setIsSignupDropdownOpen(true);
-    }
-  };
-
-  const closeSignupDropdown = () => {
-    if (window.innerWidth > 991) {
-      setIsSignupDropdownOpen(false);
     }
   };
 
@@ -142,11 +121,6 @@ function Navbar() {
                 Log in / Signup
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link to="/auth" className={`nav-link btn-signup ${isActive('/auth')}`} onClick={() => setIsMenuOpen(false)}>
-                Signup
-              </Link>
-            </li> */}
           </ul>
         </div>
       </div>
